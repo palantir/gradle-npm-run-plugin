@@ -1,0 +1,19 @@
+{
+  "name": "integration-spec-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "echo \"clean\" > did.clean",
+    "test": "echo \"test\" > did.test",
+    "build": "echo \"build\" > did.build",
+    "buildDev": "echo \"buildDev\" > did.buildDev",
+
+    "other-clean": "echo \"clean\" > other.clean",
+    "other-test": "echo \"test\" > other.test",
+    "other-build": "echo \"build\" > other.build",
+    "other-buildDev": "echo \"buildDev\" > other.buildDev"
+  },
+  "author": "",
+  "license": "ISC"
+}

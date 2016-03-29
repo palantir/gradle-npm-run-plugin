@@ -1,0 +1,16 @@
+machine:
+  java:
+    version: oraclejdk8
+  environment:
+    TERM: dumb
+
+dependencies:
+  override:
+    - ./gradlew assemble compileTestJava
+
+test:
+  override:
+    - ./scripts/verify.sh
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/build/.*TEST.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
