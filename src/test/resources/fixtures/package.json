@@ -12,7 +12,10 @@
     "other-clean": "echo \"clean\" > other.clean",
     "other-test": "echo \"test\" > other.test",
     "other-build": "echo \"build\" > other.build",
-    "other-buildDev": "echo \"buildDev\" > other.buildDev"
+    "other-buildDev": "echo \"buildDev\" > other.buildDev",
+
+    "nested-test": "echo \"test\" > nested.test",
+    "nested-build": "echo \"build\" > nested.build && npm run nested-test"
   },
   "author": "",
   "license": "ISC"

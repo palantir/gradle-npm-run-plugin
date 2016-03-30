@@ -73,4 +73,23 @@ class NpmRunPluginIntegrationSpec extends IntegrationSpec {
         result.success
         ["did.clean", "did.test", "did.build", "did.buildDev"].every { fileExists(it) }
     }
+
+    def "execute nested npm run commands with global node"() {
+        given:
+        buildFile << """
+            apply plugin: "com.palantir.npm-run"
+
+            npmRun {
+                build "nested-build"
+            }
+        """.stripIndent()
+
+        when:
+        ExecutionResult result = runTasksSuccessfully("build")
+
+        then:
+        result.success
+        fileExists("nested.test")
+        fileExists("nested.build")
+    }
 }
