@@ -1,11 +1,22 @@
 gradle-npm-run-plugin
 =====================
+[![Circle CI](https://circleci.com/gh/palantir/gradle-npm-run-plugin.svg?style=shield&circle-token=012397ab761aa8f59276b2ac7babb51d80a12a7c)](https://circleci.com/gh/palantir/gradle-npm-run-plugin)
 
 A Gradle Plugin to create lifecycle tasks that trigger `npm run` commands.
 
 Usage
 -----
-Apply the plugin. It will apply the [`gradle-node-plugin`][gradle-node-project] to the project.
+1. Apply the plugin.
+2. Configure your `package.json` `scripts` block.
+
+This will allow you to have a consistent Gradle task interface between your NPM + Java projects. You should be able to
+run commands like the following:
+
+```bash
+./gradlew build -x check
+```
+
+It will build your NPM package without running the tests.
 
 
 Tasks
