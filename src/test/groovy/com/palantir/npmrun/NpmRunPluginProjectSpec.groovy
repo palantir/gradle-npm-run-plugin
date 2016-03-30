@@ -38,11 +38,11 @@ class NpmRunPluginProjectSpec extends PluginProjectSpec {
         mustRunAfterList.every { task.mustRunAfter.values.contains(it) }
 
         where:
-        taskName    | dependsOnList                                 | mustRunAfterList
-        "clean"     | ["npmInstall", "npm_run_clean"]               | ["npmInstall"]
-        "test"      | ["npmInstall", "npm_run_test"]                | ["npmInstall", "clean"]
-        "check"     | ["test"]                                      | []
-        "build"     | ["npmInstall", "check", "npm_run_build"]      | ["npmInstall", "clean", "check"]
-        "buildDev"  | ["npmInstall", "check", "npm_run_buildDev"]   | ["npmInstall", "clean", "check"]
+        taskName    | dependsOnList                                             | mustRunAfterList
+        "clean"     | ["npmSetup", "npmInstall", "npm_run_clean"]               | ["npmSetup", "npmInstall"]
+        "test"      | ["npmSetup", "npmInstall", "npm_run_test"]                | ["npmSetup", "npmInstall", "clean"]
+        "check"     | ["test"]                                                  | []
+        "build"     | ["npmSetup", "npmInstall", "check", "npm_run_build"]      | ["npmSetup", "npmInstall", "clean", "check"]
+        "buildDev"  | ["npmSetup", "npmInstall", "check", "npm_run_buildDev"]   | ["npmSetup", "npmInstall", "clean", "check"]
     }
 }
