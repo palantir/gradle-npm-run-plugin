@@ -29,7 +29,7 @@ class NpmRunPlugin implements Plugin<Project> {
 
             project.task("test") {
                 group = GROUP_NAME
-                description = "Runs 'npm test'"
+                description = "Runs 'npm run test'"
 
                 dependsOn "npmInstall"
                 dependsOn "npm_run_${extension.test}"
