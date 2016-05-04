@@ -6,8 +6,8 @@ A Gradle Plugin to create lifecycle tasks that trigger `npm run` commands.
 
 Usage
 -----
-1. Apply the plugin.
-2. Configure your `package.json` `scripts` block.
+1. [Apply the plugin](https://plugins.gradle.org/plugin/com.palantir.npm-run)
+2. Configure your `package.json` `scripts` block
 
 This will allow you to have a consistent Gradle task interface between your NPM + Java projects. You should be able to
 run commands like the following:
