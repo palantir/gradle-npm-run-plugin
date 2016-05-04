@@ -5,10 +5,11 @@ buildscript {
     }
 
     dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:${pluginPublishVersion}"
         classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:${bintrayVersion}"
-        classpath "com.netflix.nebula:nebula-publishing-plugin:$nebulaPublishingVersion"
-        classpath "com.netflix.nebula:gradle-info-plugin:$nebulaInfoVersion"
-        classpath "gradle.plugin.com.palantir.gradle.gitversion:gradle-git-version:$gitVersionVersion"
+        classpath "com.netflix.nebula:nebula-publishing-plugin:${nebulaPublishingVersion}"
+        classpath "com.netflix.nebula:gradle-info-plugin:${nebulaInfoVersion}"
+        classpath "gradle.plugin.com.palantir.gradle.gitversion:gradle-git-version:${gitVersionVersion}"
     }
 }
 
@@ -27,11 +28,11 @@ repositories {
 
 dependencies {
     compile gradleApi()
-    compile "com.moowork.gradle:gradle-node-plugin:$gradleNodePluginVersion"
+    compile "com.moowork.gradle:gradle-node-plugin:${gradleNodePluginVersion}"
 
     testCompile gradleTestKit()
-    testCompile "com.netflix.nebula:nebula-test:$nebulaTestVersion"
-    testCompile("org.spockframework:spock-core:$spockCoreVersion") {
+    testCompile "com.netflix.nebula:nebula-test:${nebulaTestVersion}"
+    testCompile("org.spockframework:spock-core:${spockCoreVersion}") {
         exclude module: 'groovy-all'
     }
 }
