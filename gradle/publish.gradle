@@ -1,3 +1,4 @@
+apply plugin: 'com.gradle.plugin-publish'
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'nebula.info'
 apply plugin: 'nebula.javadoc-jar'
@@ -25,3 +26,24 @@ bintrayUpload.onlyIf {
 }
 
 bintrayUpload.dependsOn 'generatePomFileForNebulaPublication', 'build'
+
+
+pluginBundle {
+    website = 'https://github.com/palantir/gradle-npm-run-plugin'
+    vcsUrl = 'https://github.com/palantir/gradle-npm-run-plugin'
+    description = 'A Gradle Plugin to create lifecycle tasks that trigger npm run commands.'
+    tags = ['npm']
+
+    plugins {
+        npmRun {
+            id = 'com.palantir.npm-run'
+            displayName = 'NPM Run'
+        }
+    }
+}
+
+publishPlugins.onlyIf {
+    project.version ==~ /\d+\.\d+\.\d+/
+}
+
+publishPlugins.dependsOn 'generatePomFileForNebulaPublication', 'build'
