@@ -37,9 +37,11 @@ class NpmRunPlugin implements Plugin<Project> {
                 group = GROUP_NAME
                 description = "Runs 'npm run clean'"
 
+                dependsOn "npmSetup"
                 dependsOn "npmInstall"
                 dependsOn "npm_run_${extension.clean}"
 
+                mustRunAfter "npmSetup"
                 mustRunAfter "npmInstall"
             }
 
@@ -47,9 +49,11 @@ class NpmRunPlugin implements Plugin<Project> {
                 group = GROUP_NAME
                 description = "Runs 'npm run test'"
 
+                dependsOn "npmSetup"
                 dependsOn "npmInstall"
                 dependsOn "npm_run_${extension.test}"
 
+                mustRunAfter "npmSetup"
                 mustRunAfter "npmInstall"
                 mustRunAfter "clean"
             }
@@ -65,10 +69,12 @@ class NpmRunPlugin implements Plugin<Project> {
                 group = GROUP_NAME
                 description = "Runs 'npm run build' and depends on ':check'"
 
+                dependsOn "npmSetup"
                 dependsOn "npmInstall"
                 dependsOn "check"
                 dependsOn "npm_run_${extension.build}"
 
+                mustRunAfter "npmSetup"
                 mustRunAfter "npmInstall"
                 mustRunAfter "clean"
                 mustRunAfter "check"
@@ -78,10 +84,12 @@ class NpmRunPlugin implements Plugin<Project> {
                 group = GROUP_NAME
                 description = "Runs 'npm run buildDev' and depends on ':check'"
 
+                dependsOn "npmSetup"
                 dependsOn "npmInstall"
                 dependsOn "check"
                 dependsOn "npm_run_${extension.buildDev}"
 
+                mustRunAfter "npmSetup"
                 mustRunAfter "npmInstall"
                 mustRunAfter "clean"
                 mustRunAfter "check"
