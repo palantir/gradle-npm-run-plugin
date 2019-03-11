@@ -55,10 +55,10 @@ class NpmRunPluginProjectSpec extends PluginProjectSpec {
 
         where:
         taskName    | dependsOnList                                 | mustRunAfterList
-        "clean"     | ["npmInstall", "npm_run_clean"]               | ["npmInstall"]
-        "test"      | ["npmInstall", "npm_run_test"]                | ["npmInstall", "clean"]
+        "npmClean"  | ["npmInstall", "npm_run_clean"]               | ["npmInstall"]
+        "test"      | ["npmInstall", "npm_run_test"]                | ["npmInstall", "npmClean"]
         "check"     | ["test"]                                      | []
-        "build"     | ["npmInstall", "check", "npm_run_build"]      | ["npmInstall", "clean", "check"]
-        "buildDev"  | ["npmInstall", "check", "npm_run_buildDev"]   | ["npmInstall", "clean", "check"]
+        "build"     | ["npmInstall", "check", "npm_run_build"]      | ["npmInstall", "npmClean", "check"]
+        "buildDev"  | ["npmInstall", "check", "npm_run_buildDev"]   | ["npmInstall", "npmClean", "check"]
     }
 }

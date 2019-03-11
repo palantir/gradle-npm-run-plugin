@@ -108,4 +108,17 @@ class NpmRunPluginIntegrationSpec extends IntegrationSpec {
         fileExists("nested.test")
         fileExists("nested.build")
     }
+
+    def "works with existing `clean` task"() {
+        setup:
+        buildFile << """
+            task("clean")
+        """.stripIndent()
+
+        when:
+        ExecutionResult result = runTasksSuccessfully("clean")
+
+        then:
+        result.success
+    }
 }
