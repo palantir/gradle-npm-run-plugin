@@ -19,6 +19,7 @@ package com.palantir.npmrun
 import com.moowork.gradle.node.NodePlugin
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.Task
 
 class NpmRunPlugin implements Plugin<Project> {
 
@@ -33,7 +34,7 @@ class NpmRunPlugin implements Plugin<Project> {
         NpmRunExtension extension = project.extensions.create(EXTENSION_NAME, NpmRunExtension)
 
         project.afterEvaluate {
-            project.task("clean") {
+            project.task("npmClean") {
                 group = GROUP_NAME
                 description = "Runs 'npm run clean'"
 
@@ -42,6 +43,13 @@ class NpmRunPlugin implements Plugin<Project> {
 
                 mustRunAfter "npmInstall"
             }
+            def cleanTasks = project.getTasksByName("clean", false)
+            if (cleanTasks.empty) {
+                cleanTasks = [project.task("clean")]
+            }
+            cleanTasks.forEach { task ->
+                task.dependsOn("npmClean");
+            };
 
             project.task("test") {
                 group = GROUP_NAME
@@ -51,7 +59,7 @@ class NpmRunPlugin implements Plugin<Project> {
                 dependsOn "npm_run_${extension.test}"
 
                 mustRunAfter "npmInstall"
-                mustRunAfter "clean"
+                mustRunAfter "npmClean"
             }
 
             project.task("check") {
@@ -62,7 +70,7 @@ class NpmRunPlugin implements Plugin<Project> {
             }
 
             project.task("build") {
-                group = GROUP_NAME
+//                group = GROUP_NAME
                 description = "Runs 'npm run build' and depends on ':check'"
 
                 dependsOn "npmInstall"
@@ -70,7 +78,7 @@ class NpmRunPlugin implements Plugin<Project> {
                 dependsOn "npm_run_${extension.build}"
 
                 mustRunAfter "npmInstall"
-                mustRunAfter "clean"
+                mustRunAfter "npmClean"
                 mustRunAfter "check"
             }
 
@@ -83,7 +91,7 @@ class NpmRunPlugin implements Plugin<Project> {
                 dependsOn "npm_run_${extension.buildDev}"
 
                 mustRunAfter "npmInstall"
-                mustRunAfter "clean"
+                mustRunAfter "npmClean"
                 mustRunAfter "check"
             }
         }
