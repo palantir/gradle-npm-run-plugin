@@ -1,3 +1,7 @@
+<p align="right">
+<a href="https://autorelease.general.dmz.palantir.tech/palantir/gradle-npm-run-plugin"><img src="https://img.shields.io/badge/Perform%20an-Autorelease-success.svg" alt="Autorelease"></a>
+</p>
+
 gradle-npm-run-plugin
 =====================
 [![Circle CI](https://circleci.com/gh/palantir/gradle-npm-run-plugin.svg?style=shield&circle-token=012397ab761aa8f59276b2ac7babb51d80a12a7c)](https://circleci.com/gh/palantir/gradle-npm-run-plugin)
