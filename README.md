@@ -2,6 +2,8 @@ gradle-npm-run-plugin
 =====================
 [![Circle CI](https://circleci.com/gh/palantir/gradle-npm-run-plugin.svg?style=shield&circle-token=012397ab761aa8f59276b2ac7babb51d80a12a7c)](https://circleci.com/gh/palantir/gradle-npm-run-plugin)
 
+*WARNING:* This project is not used internally at Palantir and is no longer maintained.  It will soon be archived.
+
 A Gradle Plugin to create lifecycle tasks that trigger `npm run` commands.
 
 Usage
